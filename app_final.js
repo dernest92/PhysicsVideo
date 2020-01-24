@@ -59,7 +59,7 @@ class Block {
 const b1Pos = 100;
 const b1Mass = 10;
 const b2Mass = 100;
-const b2Pos = 400;
+const b2Pos = 250;
 const b2vel = -50;
 
 const block1 = new Block(b1Mass, b1Pos, 0, "blue");
