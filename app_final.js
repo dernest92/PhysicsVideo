@@ -66,7 +66,10 @@ let accumulator = 0;
 const dt = 0.0001;
 function loop(ts) {
   if (lastTime) {
-    const frameTime = ts - lastTime;
+    let frameTime = ts - lastTime;
+    if (frameTime > 250) {
+      frameTime = 250;
+    }
     accumulator += frameTime;
     while (accumulator >= dt) {
       update(dt);
