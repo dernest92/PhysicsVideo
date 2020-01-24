@@ -39,6 +39,13 @@ class Block {
     this.size = mass.toString().length * 10;
   }
   render() {
+    ctx.fillStyle = "black";
+    ctx.font = "20px Georgia";
+    ctx.fillText(
+      numberWithCommas(this.mass),
+      this.pos,
+      canvas.height - (this.size + 10)
+    );
     ctx.fillStyle = this.color;
     ctx.fillRect(this.pos, canvas.height - this.size, this.size, this.size);
   }
@@ -96,7 +103,7 @@ function renderFrame() {
   ctx.fillStyle = "black";
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.font = "20px Georgia";
-  ctx.fillText(`Collisions: ${count}`, 10, 20);
+  ctx.fillText(`Collisions: ${numberWithCommas(count)}`, 10, 20);
   block1.render();
   block2.render();
 }
@@ -165,3 +172,8 @@ function updateMass(mass, blk) {
 
 m1Input.addEventListener("input", e => updateMass(e.target.value, block1));
 m2Input.addEventListener("input", e => updateMass(e.target.value, block2));
+
+// Number formatting utility
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
