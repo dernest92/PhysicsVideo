@@ -1,4 +1,4 @@
-#Physics and PI
+# Physics and PI
 
 This is a simulation that demonstrates how pi can be calculated by counting the number of collisions between two blocks
 
