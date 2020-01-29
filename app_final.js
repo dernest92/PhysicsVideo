@@ -58,7 +58,7 @@ class Block {
 // Instantiate two blocks
 const b1Pos = 100;
 const b1Mass = 10;
-const b2Mass = 100;
+const b2Mass = 10000000;
 const b2Pos = 250;
 const b2vel = -50;
 
