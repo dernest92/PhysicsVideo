@@ -82,6 +82,7 @@ function loop(ts) {
       update(dt);
       accumulator -= dt;
     }
+    playClack();
     renderFrame();
   }
   if (!quit) {
@@ -114,6 +115,7 @@ function checkWall(blk) {
     blk.pos = 0;
     blk.vel *= -1;
     count++;
+    clacking = true;
   }
 }
 // Check collisions between blocks
@@ -134,6 +136,7 @@ function checkBlockCollision(blk1, blk2) {
     blk1.vel = v1f;
     blk2.vel = v2f;
     count++;
+    clacking = true;
   }
 }
 
@@ -177,3 +180,15 @@ m2Input.addEventListener("input", e => updateMass(e.target.value, block2));
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+// BONUS --- Clack sound!
+const clack = new Audio("clack.wav");
+let clacking = false;
+
+const playClack = () => {
+  if (clacking === true) {
+    clack.currentTime = 0;
+    clack.play();
+    clacking = false;
+  }
+};
