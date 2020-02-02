@@ -169,7 +169,11 @@ resetBtn.addEventListener("click", reset);
 // Make update mass function
 function updateMass(mass, blk) {
   blk.mass = mass;
-  blk.size = mass.toString().length * 10;
+  if (mass < 1) {
+    blk.size = 5;
+  } else {
+    blk.size = mass.toString().length * 10;
+  }
   renderFrame();
 }
 
@@ -178,7 +182,11 @@ m2Input.addEventListener("input", e => updateMass(e.target.value, block2));
 
 // Number formatting utility
 function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  if (parseFloat(x) >= 1) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  } else {
+    return x;
+  }
 }
 
 // BONUS --- Clack sound!
